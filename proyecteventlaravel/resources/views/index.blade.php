@@ -140,23 +140,31 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
-            <div class="evento">
 
-            <div class="form group">
-              <strong>evento:</strong>
-              <select name="id_evento">
+
                 @foreach ($evento as $event) 
-                  <option value="{{$evento->id}}">
-                  {{$evento->titulo}}
-                  </option>
-                @endforeach
-              </select>
-            </div>
+
+                <div class="col-lg-4 col-md-6">
+            <div class="evento">
+                  
+                
+              <img src="<?php echo asset('imgs/events/1.jpg') ?>" alt="Events 1" class="img-fluid">
+              <div class="details">
+                <h3><a href="event-details-1">{{$event->titulo}}</a></h3>
+                <p>{{$event->descripcion}}</p>
+              </div>
 
 
-            </div>
+            
+              </div>
           </div>
+              @endforeach
+
+
+
+
+
+
 
 
 

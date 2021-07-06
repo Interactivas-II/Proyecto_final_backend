@@ -37,7 +37,7 @@ Route::get('ticket-purchase', function () {
     return view('ticket-purchase');
 });
 
-Route::get('/events',[EventController::class, 'show']);
+//Route::get('/events',[EventController::class, 'show']);
 
 /*Route::get('/event/{id}', function ($id) {
     return "texto".$id;

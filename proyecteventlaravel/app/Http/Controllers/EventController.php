@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
-use app\Models\Event;
+use App\Models\Evento;
 use Illuminate\Support\Facades\DB;
 
 
@@ -16,7 +17,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $evento = Event::all();
+        $evento = Evento::all();
+        //$evento = DB::select('select * from evento');
 
         return view('index', compact('evento'));
         //return $evento = DB::select('select * from evento where id_evento=?');
@@ -38,6 +40,7 @@ class EventController extends Controller
     public function create()
     {
 
+        
         //DB::select('select * from evento where id_evento=?', [$id]);
 
     }
