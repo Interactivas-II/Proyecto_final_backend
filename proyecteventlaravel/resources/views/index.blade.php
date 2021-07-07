@@ -208,21 +208,8 @@
           <!-- Categories Free Event -->
           <div role="tabpanel" class="col-lg-9  tab-pane fade" id="free">
 
-
-
-
-            <div class="row categories-item">
-              <div class="col-md-12">
-                <div class="evento">
-                  <img src="<?php echo asset('imgs/events/1.jpg') ?>" alt="Evento #1">
-                </div>
-                <h4>Sol y Arena <span>Carrera Maratonica </span></h4>
-                <p>Fecha: 14/03/22 & Hora: 08:00 am</p>
-              </div>
-            </div>
-
             @foreach ($evento as $event)
-            @if ($event->restriccion_evento = 0)
+            @if ($event->restriccion_evento === 1)
             <div class="row categories-item">
               <div class="col-md-12">
                 <div class="evento">
@@ -235,28 +222,25 @@
             @endif
             @endforeach
 
-
-            @for ($i = 0; $i <= $event->id_evento; $i++) 
-            <p>{{$event->id_evento}}</p>
-            <p>{{$event->titulo}}</p>
-            @endfor
- 
-
           </div>
           <!-- End Categories Free Event -->
 
           <!-- Categories Payment Event -->
           <div role="tabpanel" class="col-lg-9  tab-pane fade" id="payment">
 
+          @foreach ($evento as $event)
+            @if ($event->restriccion_evento === 0)
             <div class="row categories-item">
               <div class="col-md-12">
                 <div class="evento">
-                  <img src="<?php echo asset('imgs/events/4.jpg') ?>" alt="Evento #4">
+                  <img src="{{$event->imagen}}" alt="{{$event->titulo}}">
                 </div>
-                <h4>Música para disfrutar <span>Orquesta Filarmónica Infantil</span></h4>
-                <p>Fecha: 24/08/21 & Hora: 07:00 pm</p>
+                <h4>{{$event->titulo}}<span> {{$event->descripcion}}</span></h4>
+                <p>Fecha y hora: {{$event->fecha_hora}}</p>
               </div>
             </div>
+            @endif
+            @endforeach
 
 
           </div>
