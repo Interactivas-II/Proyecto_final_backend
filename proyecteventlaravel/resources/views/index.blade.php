@@ -74,23 +74,27 @@
       <div class="gallery-slider swiper-container">
         <div class="swiper-wrapper align-items-center">
 
-
-
-
-
-
+          <!--
           <div class="swiper-slide">
             <a href="<?php echo asset('imgs/gallery/1.jpg') ?>" class="gallery-lightbox">
               <img src="<?php echo asset('imgs/gallery/1.jpg') ?>" class="img-fluid" alt="">
             </a>
           </div>
+          -->
 
+          @foreach ($evento as $event)
+          <div class="swiper-slide">
 
+            <a href="{{$event->imagen}}" class="gallery-lightbox">
+              <img src="{{$event->imagen}}" class="img-fluid" alt="{{$event->titulo}}">
+            </a>
 
-
+          </div>
+          @endforeach
 
         </div>
-        <div class="swiper-pagination"></div>
+      </div>
+      <div class="swiper-pagination"></div>
       </div>
 
     </section><!-- End Home Gallery Section -->
@@ -127,47 +131,21 @@
         </div>
         <div class="row">
 
-
-
-
+          @foreach ($evento as $event)
           <div class="col-lg-4 col-md-6">
             <div class="evento">
-              <img src="<?php echo asset('imgs/events/1.jpg') ?>" alt="Events 1" class="img-fluid">
-              <div class="details">
-                <h3><a href="event-details-1">Sol y Arena</a></h3>
-                <p>Carrera Maratonica</p>
-              </div>
-            </div>
-          </div>
-
-
-
-                @foreach ($evento as $event) 
-
-                <div class="col-lg-4 col-md-6">
-            <div class="evento">
-                  
-                
-              <img src="<?php echo asset('imgs/events/1.jpg') ?>" alt="Events 1" class="img-fluid">
+              <!--
+                <img src="<?php echo asset('imgs/events/1.jpg') ?>" alt="Events 1" class="img-fluid">
+              -->
+              <img src="{{$event->imagen}}" alt="{{$event->titulo}}">
               <div class="details">
                 <h3><a href="event-details-1">{{$event->titulo}}</a></h3>
                 <p>{{$event->descripcion}}</p>
               </div>
 
-
-            
-              </div>
+            </div>
           </div>
-              @endforeach
-
-
-
-
-
-
-
-
-
+          @endforeach
 
         </div>
       </div>
@@ -198,6 +176,9 @@
           <!-- Categories All Event -->
           <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="all">
 
+
+
+            <!--
             <div class="row categories-item">
               <div class="col-md-12">
                 <div class="evento">
@@ -207,7 +188,19 @@
                 <p>Fecha: 14/03/22 & Hora: 08:00 am</p>
               </div>
             </div>
+            -->
 
+            @foreach ($evento as $event)
+            <div class="row categories-item">
+              <div class="col-md-12">
+                <div class="evento">
+                  <img src="{{$event->imagen}}" alt="{{$event->titulo}}">
+                </div>
+                <h4>{{$event->titulo}}<span> {{$event->descripcion}}</span></h4>
+                <p>Fecha y hora: {{$event->fecha_hora}}</p>
+              </div>
+            </div>
+            @endforeach
 
           </div>
           <!-- End Categories All Event -->
@@ -215,6 +208,9 @@
           <!-- Categories Free Event -->
           <div role="tabpanel" class="col-lg-9  tab-pane fade" id="free">
 
+
+
+
             <div class="row categories-item">
               <div class="col-md-12">
                 <div class="evento">
@@ -225,7 +221,26 @@
               </div>
             </div>
 
+            @foreach ($evento as $event)
+            @if ($event->restriccion_evento = 0)
+            <div class="row categories-item">
+              <div class="col-md-12">
+                <div class="evento">
+                  <img src="{{$event->imagen}}" alt="{{$event->titulo}}">
+                </div>
+                <h4>{{$event->titulo}}<span> {{$event->descripcion}}</span></h4>
+                <p>Fecha y hora: {{$event->fecha_hora}}</p>
+              </div>
+            </div>
+            @endif
+            @endforeach
 
+
+            @for ($i = 0; $i <= $event->id_evento; $i++) 
+            <p>{{$event->id_evento}}</p>
+            <p>{{$event->titulo}}</p>
+            @endfor
+ 
 
           </div>
           <!-- End Categories Free Event -->
