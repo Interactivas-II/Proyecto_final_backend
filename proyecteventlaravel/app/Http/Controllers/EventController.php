@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Evento;
+use App\Models\Ticket;
 use Illuminate\Support\Facades\DB;
 
 
@@ -19,10 +20,48 @@ class EventController extends Controller
     {
         $evento = Evento::all();
         //$evento = DB::select('select * from evento');
-
+        //return $evento;
         return view('index', compact('evento'));
         //return $evento = DB::select('select * from evento where id_evento=?');
         
+    }
+
+    public function eventdetails1($id_evento)
+    {
+        $detalle_evento = Evento::where ('id_evento', '=', $id_evento)->first();
+        
+        //return $detalle_evento;
+        return view('event-detail-1', compact('detalle_evento'));
+    }
+
+    public function ticketpart1()
+    {
+        return view('ticket-part-1');
+    }
+
+    public function ticketpart2()
+    {
+        return view('ticket-part-2');
+    }
+
+    public function ticketpartpurchase()
+    {
+        return view('ticket-purchase');
+    }
+
+    public function ticketstore(Request $request)
+    {
+        $ticket = new Ticket();
+        $ticket->id_evento = $request->id_evento;
+        $ticket->fecha_hora = $request->fecha_hora;
+        $ticket->nombre = $request->nombre;
+        $ticket->correo = $request->correo;
+        $ticket->espacio_ninio = $request->espacio_ninio;
+        $ticket->espacio_adulto = $request->espacio_adulto;
+        $ticket->total = $request->total;
+        $ticket->tickets_idevent = $request->tickets_idevent;
+        $ticket->save();
+        return redirect()->route('index');
     }
 
     /**

@@ -34,6 +34,7 @@ window.onload = function () {
 			p_lugarEvento = JSON.parse(miLSlugarEvento.getItem('lugarEvento'));
 			p_fechayhoraEvento = JSON.parse(miLSfechayhoraEvento.getItem('fechayhoraEvento'));
 			p_imagenEvento = JSON.parse(miLSimagenEvento.getItem('imagenEvento'));
+			p_idEvento = JSON.parse(miLSimagenEvento.getItem('idEvento'));
 			
 			p_tickets_name = JSON.parse(miLSTicketName.getItem('ticketname'));
 			p_tickets_email = JSON.parse(miLSTicketEmail.getItem('ticketemail'));
@@ -45,20 +46,30 @@ window.onload = function () {
 	}
 	
 	function cargarInfoHTML() {
+		var d = new Date();
+		var date_format_str = d.getFullYear().toString()+"-"+((d.getMonth()+1).toString().length==2?(d.getMonth()+1).toString():"0"+(d.getMonth()+1).toString())+"-"+(d.getDate().toString().length==2?d.getDate().toString():"0"+d.getDate().toString())+" "+(d.getHours().toString().length==2?d.getHours().toString():"0"+d.getHours().toString())+":"+((parseInt(d.getMinutes()/5)*5).toString().length==2?(parseInt(d.getMinutes()/5)*5).toString():"0"+(parseInt(d.getMinutes()/5)*5).toString())+":00";
 		
 		document.getElementById('p_nombreEvento').innerHTML = p_nombreEvento;
 		document.getElementById('p_lugarEvento').innerHTML = p_lugarEvento;
 		document.getElementById('p_fechayhoraEvento').innerHTML = p_fechayhoraEvento;
+		document.getElementById('in_fechayhoraEvento').value = date_format_str;
 		//document.getElementById('p_imagenEvento').innerHTML = p_imagenEvento;
+		document.getElementById('in_idEvento').value = p_idEvento;
 		
 		document.getElementById('p_tickets_name').innerHTML = p_tickets_name;
+		document.getElementById('in_tickets_name').value = p_tickets_name;
 		document.getElementById('p_tickets_email').innerHTML = p_tickets_email;
+		document.getElementById('in_tickets_email').value = p_tickets_email;
 		
 		document.getElementById('p_tickets_adult_info').innerHTML = p_tickets_adult_info;
+		document.getElementById('in_tickets_adult_info').value = p_tickets_adult_info;
 		document.getElementById('p_tickets_children_info').innerHTML = p_tickets_children_info;
+		document.getElementById('in_tickets_children_info').value = p_tickets_children_info;
 		document.getElementById('p_total_info').innerHTML = p_total_info;
+		document.getElementById('in_total_info').value = p_total_info;
 		
 		document.getElementById('p_tickets_idEvent').innerHTML = Math.random().toString(36).substr(2, 9) + ' - ' + p_tickets_email;
+		document.getElementById('in_tickets_idEvent').value = document.getElementById("p_tickets_idEvent").textContent;
 	}
 	
 	cargarInfoDeLocalStorage();

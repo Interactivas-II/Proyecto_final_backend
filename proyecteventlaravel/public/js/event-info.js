@@ -3,17 +3,20 @@ window.onload = function () {
 	let lugarEvento = '';
 	let fechayhoraEvento = '';
 	let imagenEvento = '';
+	let idEvento = '';
 	
 	const miLSnombreEvento = window.localStorage;
 	const miLSlugarEvento = window.localStorage;
 	const miLSfechayhoraEvento = window.localStorage;
 	const miLSimagenEvento = window.localStorage;
+	const miLSidEvento = window.localStorage;
 	
 	function guardarInfoHTML() {
 		nombreEvento = document.getElementById("nombreEvento").textContent;
 		lugarEvento = document.getElementById("lugarEvento").textContent;
 		fechayhoraEvento = document.getElementById("fechayhoraEvento").textContent;
 		imagenEvento = document.getElementById("imagenEvento").src;
+		idEvento = document.getElementById("idEvento").textContent;
 	}
 	
 	function guardarEnLocalStorage() {
@@ -21,6 +24,7 @@ window.onload = function () {
 		miLSlugarEvento.setItem('lugarEvento', JSON.stringify(lugarEvento));
 		miLSfechayhoraEvento.setItem('fechayhoraEvento', JSON.stringify(fechayhoraEvento));
 		miLSimagenEvento.setItem('imagenEvento', JSON.stringify(imagenEvento));
+		miLSfechayhoraEvento.setItem('idEvento', JSON.stringify(idEvento));
 	}
 	
 	guardarInfoHTML();

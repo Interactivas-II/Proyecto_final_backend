@@ -52,8 +52,8 @@
           <li><a class="nav-link scrollto" href="#about">Quiénes somos</a></li>
           <li><a class="nav-link scrollto" href="#events">Eventos</a></li>
           <li><a class="nav-link scrollto" href="#categories">Categorias</a></li>
-          <li><a class="nav-link scrollto" href="#nexts-events">Próximamente</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contáctanos</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#nexts-events">Próximamente</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#contact">Contáctanos</a></li> -->
           <form class="d-flex search-div">
             <input class="form-control search-form-bar" type="text" placeholder="Buscar" name="search" id="search_text">
             <button class="btn-search" type="submit" id="search_submit"><i class="bi bi-search"></i></button>
@@ -137,10 +137,10 @@
               <!--
                 <img src="<?php echo asset('imgs/events/1.jpg') ?>" alt="Events 1" class="img-fluid">
               -->
-              <img src="{{$event->imagen}}" alt="{{$event->titulo}}">
+              <img src="{{asset($event->imagen)}}" alt="{{$event->titulo}}" class="img-fluid">
               <div class="details">
-                <h3><a href="event-details-1">{{$event->titulo}}</a></h3>
-                <p>{{$event->descripcion}}</p>
+                <h3><a href="{{route('eventdetails', $event->id_evento)}}">{{$event->titulo}}</a></h3>
+                <p>{{$event->lugar_evento}}</p>
               </div>
 
             </div>

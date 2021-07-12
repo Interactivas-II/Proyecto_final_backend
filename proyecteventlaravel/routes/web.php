@@ -19,23 +19,17 @@ use App\Http\Controllers\CalculatorIMCController;
 
 Route::get('/', [EventController::class, 'index']);
 
-Route::get('index',[EventController::class, 'index']);
+Route::get('index',[EventController::class, 'index'])->name('index');
 
-Route::get('event-details-1', function () {
-    return view('event-detail-1');
-});
+Route::get('eventdetails1/{titulo}',[EventController::class, 'eventdetails1'])->name('eventdetails');
 
-Route::get('ticket-part-1', function () {
-    return view('ticket-part-1');
-});
+Route::get('ticketpart1',[EventController::class, 'ticketpart1'])->name('ticketpart1');
 
-Route::get('ticket-part-2', function () {
-    return view('ticket-part-2');
-});
+Route::get('ticketpart2',[EventController::class, 'ticketpart2'])->name('ticketpart2');
 
-Route::get('ticket-purchase', function () {
-    return view('ticket-purchase');
-});
+Route::get('ticketpartpurchase',[EventController::class, 'ticketpartpurchase'])->name('ticketpartpurchase');
+
+Route::POST('ticketstore',[EventController::class, 'ticketstore'])->name('ticketstore');
 
 //Route::get('/events',[EventController::class, 'show']);
 
